@@ -19,18 +19,18 @@ public class ScrollpHAT {
     
     public init() throws {
         try bus = SMBus(busNumber: 1)
-        try bus.writeI2CBlockData(ScrollpHAT.i2cAddress, command: ScrollpHAT.cmdSetMode, data: [ScrollpHAT.mode5x11])
+        try bus.writeI2CBlockData(ScrollpHAT.i2cAddress, command: ScrollpHAT.cmdSetMode, values: [ScrollpHAT.mode5x11])
         
     }
     
     public func update() throws {
         var window = buffer
         window.append(0xFF)
-        try bus.writeI2CBlockData(ScrollpHAT.i2cAddress, command: ScrollpHAT.cmdSetState, data: window)
+        try bus.writeI2CBlockData(ScrollpHAT.i2cAddress, command: ScrollpHAT.cmdSetState, values: window)
     }
     
     public func setBrightness(brightness: Int) throws {
-        try bus.writeI2CBlockData(ScrollpHAT.i2cAddress, command: ScrollpHAT.cmdSetBrightness, data: [UInt8(brightness)])
+        try bus.writeI2CBlockData(ScrollpHAT.i2cAddress, command: ScrollpHAT.cmdSetBrightness, values: [UInt8(brightness)])
     }
     
     public func setPixel(x x: Int, y: Int, value: Bool) {
