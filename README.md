@@ -26,7 +26,10 @@ to turn on/off an led use :
 pHAT.setPixel(x: 0, y: 0, value: true)
 try pHAT.update()
 ```
-
+write a string:
+```
+try pHAT.writeString("SWIFT")
+```
 ##TODO
 - [ ] Add missing functions (text, scrolling)
 - [ ] Add documentation
