@@ -1,7 +1,7 @@
 #scroll-phat-swift
 <a href="https://gitter.im/Sephiroth87/scroll-phat-swift?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/Sephiroth87/scroll-phat-swift" /></a>
 
-scroll-phat-swift is a (incomplete) linux library to control [Pimoroni Scroll pHAT](https://shop.pimoroni.com/collections/raspberry-pi-zero/products/scroll-phat) for Raspberry Pi.
+scroll-phat-swift is a Linux library to control [Pimoroni Scroll pHAT](https://shop.pimoroni.com/collections/raspberry-pi-zero/products/scroll-phat) for Raspberry Pi.
 
 <p align="center">
 	<img src="https://raw.githubusercontent.com/Sephiroth87/scroll-phat-swift/master/snake.gif" alt="Snake" />
@@ -30,7 +30,12 @@ write a string:
 ```
 try pHAT.writeString("SWIFT")
 ```
+scrolling:
+```
+try pHAT.scroll()
+try pHAT.scrollTo(0)
+```
 ##TODO
-- [ ] Add missing functions (text, scrolling)
+- [x] Add missing functions (text, scrolling)
 - [ ] Add documentation
 - [ ] Support Package Manager
