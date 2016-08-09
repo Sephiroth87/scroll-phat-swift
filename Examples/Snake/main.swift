@@ -19,16 +19,16 @@ do {
         try pHAT.update()
         usleep(50000)
         pHAT.setPixel(x: snake[2].x, y: snake[2].y, value: false)
-        for (i, point) in snake.enumerate() {
+        for (i, point) in snake.enumerated() {
             var point = point
             point.x += point.dx
             if (point.x < 0 && point.dx == -1) || (point.x > 10 && point.dx == 1) {
-                ++point.y
+                point.y += 1
                 point.dx = -point.dx
             }
             snake[i] = point
         }
     }
-} catch {
-    
+} catch let e as SMBusError {
+    print(e)
 }

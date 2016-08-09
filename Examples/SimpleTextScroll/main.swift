@@ -17,7 +17,7 @@ typealias SigactionHandler = @convention(c)(Int32) -> Void
 
 func trap(signum: Int32, action: SigactionHandler) {
     var sigAction = sigaction()
-    sigAction.__sigaction_handler = unsafeBitCast(action, sigaction.__Unnamed_union___sigaction_handler.self)
+    sigAction.__sigaction_handler = unsafeBitCast(action, to: sigaction.__Unnamed_union___sigaction_handler.self)
     sigaction(signum, &sigAction, nil)
 }
 
@@ -26,7 +26,7 @@ let handler: SigactionHandler = { signal in
     _ = try? pHAT?.clear()
     exit(0)
 }
-trap(2, action:handler)
+trap(signum: 2, action:handler)
 
 do {
     pHAT = try ScrollpHAT()
@@ -36,6 +36,6 @@ do {
         try pHAT?.scroll()
         usleep(100000)
     }
-} catch {
-    print("Something bad happened")
+} catch let e as SMBusError {
+    print(e)
 }
